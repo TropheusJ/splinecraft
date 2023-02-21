@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "splinecraft",
   "version": "${version}",
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Splinecraft",
+  "description": "Simulation and creation of RoadRunner trajectories in Minecraft",
   "authors": [
     "Tropheus Jay"
   ],
   "contact": {
-    "sources": "https://github.com/TropheusJ/fabric-example-mod"
+    "sources": "https://github.com/TropheusJ/splinecraft"
   },
   "license": "MIT",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/splinecraft/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.tropheusj.modid.ExampleMod"
+      "io.github.tropheusj.splinecraft.SplineCraft"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "splinecraft.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",
