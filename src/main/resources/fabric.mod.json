@@ -16,6 +16,9 @@
   "entrypoints": {
     "main": [
       "io.github.tropheusj.splinecraft.SplineCraft"
+    ],
+    "client": [
+      "io.github.tropheusj.splinecraft.SplineCraftClient"
     ]
   },
   "mixins": [

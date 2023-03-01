@@ -1,5 +1,6 @@
 package io.github.tropheusj.splinecraft;
 
+import io.github.tropheusj.splinecraft.packets.serverbound.ServerboundPackets;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.resources.ResourceLocation;
@@ -13,6 +14,8 @@ public class SplineCraft implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		Content.init();
+		ServerboundPackets.init();
 	}
 
 	public static ResourceLocation id(String path) {

@@ -1,0 +1,19 @@
+{
+  "item.splinecraft.remote_controller": "Remote Controller",
+
+  "splinecraft.field.controller.menu": "Field Controller",
+  "splinecraft.field.controller.initialize": "Initialize",
+  "splinecraft.field.controller.reset": "Reset",
+
+  "splinecraft.robot.configurator.menu": "Robot Configuration",
+
+  "splinecraft.robot.config.max_vel": "Max Vel.",
+  "splinecraft.robot.config.max_accel": "Max Accel.",
+  "splinecraft.robot.config.max_ang_vel": "Max §oθ §rVel.",
+  "splinecraft.robot.config.max_ang_accel": "Max §oθ §rAccel.",
+  "splinecraft.robot.config.track_width": "Track Width",
+  "splinecraft.robot.config.width": "Width",
+  "splinecraft.robot.config.height": "Height",
+
+  "splinecraft.robot.config.apply": "Apply Changes"
+}
