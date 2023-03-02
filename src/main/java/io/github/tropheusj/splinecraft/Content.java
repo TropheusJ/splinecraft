@@ -2,7 +2,7 @@ package io.github.tropheusj.splinecraft;
 
 import io.github.tropheusj.splinecraft.field.controller.FieldControllerBlock;
 import io.github.tropheusj.splinecraft.field.controller.FieldControllerBlockEntity;
-import io.github.tropheusj.splinecraft.field.FieldFloorBlock;
+import io.github.tropheusj.splinecraft.field.floor.FieldFloorBlock;
 import io.github.tropheusj.splinecraft.field.FieldWallBlock;
 import io.github.tropheusj.splinecraft.field.controller.FieldControllerMenu;
 import io.github.tropheusj.splinecraft.field.controller.RemoteControllerItem;

@@ -58,7 +58,6 @@ public class RobotModel extends EntityModel<RobotEntity> {
 		for (ModelPart wheel : wheels) {
 			wheel.xRot = ageInTicks;
 		}
-		System.out.println();
 	}
 
 	@Override

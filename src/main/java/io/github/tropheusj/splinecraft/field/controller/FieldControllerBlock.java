@@ -5,6 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -17,6 +18,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class FieldControllerBlock extends BaseEntityBlock {
@@ -32,6 +34,8 @@ public class FieldControllerBlock extends BaseEntityBlock {
 	}
 
 	@Override
+	@NotNull
+	@SuppressWarnings("deprecation")
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		if (level.getBlockEntity(pos) instanceof FieldControllerBlockEntity controller) {
 			player.openMenu(controller);
@@ -40,7 +44,16 @@ public class FieldControllerBlock extends BaseEntityBlock {
 		return InteractionResult.FAIL;
 	}
 
+	@Nullable
 	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		BlockState state = super.getStateForPlacement(context);
+		Direction facing = context.getHorizontalDirection();
+		return state == null ? null : state.setValue(FACING, facing);
+	}
+
+	@Override
+	@NotNull
 	public RenderShape getRenderShape(BlockState state) {
 		return RenderShape.MODEL;
 	}

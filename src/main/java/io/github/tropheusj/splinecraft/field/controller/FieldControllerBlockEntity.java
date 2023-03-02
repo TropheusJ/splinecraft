@@ -1,6 +1,10 @@
 package io.github.tropheusj.splinecraft.field.controller;
 
 import io.github.tropheusj.splinecraft.Content;
+import io.github.tropheusj.splinecraft.SplineCraft;
+import io.github.tropheusj.splinecraft.field.FieldWallBlock;
+import io.github.tropheusj.splinecraft.field.FieldWallBlock.Shape;
+import io.github.tropheusj.splinecraft.field.floor.FieldFloorBlock;
 import io.github.tropheusj.splinecraft.robot.entity.RobotEntity;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.core.BlockPos;
@@ -11,6 +15,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
@@ -18,10 +24,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -29,6 +38,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class FieldControllerBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, Container {
+	public static final ResourceLocation FIELD_STRUCTURE = SplineCraft.id("field");
 	public static final Component TITLE = Component.translatable("splinecraft.field.controller.menu");
 
 	private final ItemStack remote;
@@ -52,20 +62,56 @@ public class FieldControllerBlockEntity extends BlockEntity implements ExtendedS
 	}
 
 	public void resetField() {
-		if (level == null)
+		if (!(level instanceof ServerLevel serverLevel))
 			return;
 
-		BlockPos pos = worldPosition.relative(getFacing(), 3);
-		level.setBlockAndUpdate(pos, Blocks.STONE.defaultBlockState());
+		// place a fresh copy of the field
+		Direction facing = getFacing();
+		BlockPos fieldFloorCorner = worldPosition.below()
+				.relative(facing, 6)
+				.relative(facing.getCounterClockWise(), 3);
 
+		StructureTemplate field = serverLevel.getStructureManager().get(FIELD_STRUCTURE)
+				.orElseThrow(() -> new IllegalStateException("Field structure not found"));
+		Rotation rotation = switch (facing) {
+			case EAST -> Rotation.CLOCKWISE_90;
+			case SOUTH -> Rotation.CLOCKWISE_180;
+			case WEST -> Rotation.COUNTERCLOCKWISE_90;
+			default -> Rotation.NONE;
+		};
+		StructurePlaceSettings settings = new StructurePlaceSettings().setRotation(rotation);
+		field.placeInWorld(serverLevel, fieldFloorCorner, fieldFloorCorner, settings, level.random, Block.UPDATE_ALL);
+
+		BlockPos robotStart = worldPosition.above();
+
+		// set up the robot entity
 		if (robot != null)
 			robot.discard();
 		this.robot = new RobotEntity(Content.ROBOT_ENTITY, level);
-		robot.moveTo(pos.above(), 0, 0);
+		robot.moveTo(robotStart, 0, 0);
 		level.addFreshEntity(robot);
 
+		// ready!
 		initialized = true;
 		setChanged();
+	}
+
+	private void placeFieldIteratively(BlockPos fieldFloorCorner, Direction right, Direction back) {
+		for (int x = 0; x < 6; x++) {
+			for (int z = 0; z < 6; z++) {
+				BlockPos pos = fieldFloorCorner.relative(right, x).relative(back, z);
+				BlockState state = Content.FIELD_FLOOR.block().defaultBlockState()
+						.setValue(FieldFloorBlock.ROW, z)
+						.setValue(FieldFloorBlock.COLUMN, x);
+				level.setBlock(pos, state, Block.UPDATE_ALL);
+				Shape shape = Shape.fromRowAndColumn(x, z);
+				if (shape == null)
+					continue;
+				BlockState wallState = Content.FIELD_WALL.block().defaultBlockState()
+						.setValue(FieldWallBlock.SHAPE, shape);
+				level.setBlock(pos.above(), wallState, Block.UPDATE_ALL);
+			}
+		}
 	}
 
 	// sync
