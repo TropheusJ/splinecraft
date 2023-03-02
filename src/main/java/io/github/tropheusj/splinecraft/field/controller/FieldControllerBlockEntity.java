@@ -96,24 +96,6 @@ public class FieldControllerBlockEntity extends BlockEntity implements ExtendedS
 		setChanged();
 	}
 
-	private void placeFieldIteratively(BlockPos fieldFloorCorner, Direction right, Direction back) {
-		for (int x = 0; x < 6; x++) {
-			for (int z = 0; z < 6; z++) {
-				BlockPos pos = fieldFloorCorner.relative(right, x).relative(back, z);
-				BlockState state = Content.FIELD_FLOOR.block().defaultBlockState()
-						.setValue(FieldFloorBlock.ROW, z)
-						.setValue(FieldFloorBlock.COLUMN, x);
-				level.setBlock(pos, state, Block.UPDATE_ALL);
-				Shape shape = Shape.fromRowAndColumn(x, z);
-				if (shape == null)
-					continue;
-				BlockState wallState = Content.FIELD_WALL.block().defaultBlockState()
-						.setValue(FieldWallBlock.SHAPE, shape);
-				level.setBlock(pos.above(), wallState, Block.UPDATE_ALL);
-			}
-		}
-	}
-
 	// sync
 
 	@Nullable
