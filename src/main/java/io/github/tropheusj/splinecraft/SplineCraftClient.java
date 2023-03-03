@@ -10,7 +10,6 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.resources.ResourceLocation;
 
 public class SplineCraftClient implements ClientModInitializer {
 	public static final ModelLayerLocation ROBOT_MODEL_LAYER = new ModelLayerLocation(SplineCraft.id("robot"), "main");

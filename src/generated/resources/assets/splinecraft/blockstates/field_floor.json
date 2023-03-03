@@ -1,0 +1,544 @@
+{
+  "variants": {
+    "column=0,facing=east,row=0": {
+      "model": "splinecraft:block/field_floor_column_0_row_0",
+      "y": 90
+    },
+    "column=0,facing=east,row=1": {
+      "model": "splinecraft:block/field_floor_column_0_row_1",
+      "y": 90
+    },
+    "column=0,facing=east,row=2": {
+      "model": "splinecraft:block/field_floor_column_0_row_2",
+      "y": 90
+    },
+    "column=0,facing=east,row=3": {
+      "model": "splinecraft:block/field_floor_column_0_row_3",
+      "y": 90
+    },
+    "column=0,facing=east,row=4": {
+      "model": "splinecraft:block/field_floor_column_0_row_4",
+      "y": 90
+    },
+    "column=0,facing=east,row=5": {
+      "model": "splinecraft:block/field_floor_column_0_row_5",
+      "y": 90
+    },
+    "column=0,facing=north,row=0": {
+      "model": "splinecraft:block/field_floor_column_0_row_0"
+    },
+    "column=0,facing=north,row=1": {
+      "model": "splinecraft:block/field_floor_column_0_row_1"
+    },
+    "column=0,facing=north,row=2": {
+      "model": "splinecraft:block/field_floor_column_0_row_2"
+    },
+    "column=0,facing=north,row=3": {
+      "model": "splinecraft:block/field_floor_column_0_row_3"
+    },
+    "column=0,facing=north,row=4": {
+      "model": "splinecraft:block/field_floor_column_0_row_4"
+    },
+    "column=0,facing=north,row=5": {
+      "model": "splinecraft:block/field_floor_column_0_row_5"
+    },
+    "column=0,facing=south,row=0": {
+      "model": "splinecraft:block/field_floor_column_0_row_0",
+      "y": 180
+    },
+    "column=0,facing=south,row=1": {
+      "model": "splinecraft:block/field_floor_column_0_row_1",
+      "y": 180
+    },
+    "column=0,facing=south,row=2": {
+      "model": "splinecraft:block/field_floor_column_0_row_2",
+      "y": 180
+    },
+    "column=0,facing=south,row=3": {
+      "model": "splinecraft:block/field_floor_column_0_row_3",
+      "y": 180
+    },
+    "column=0,facing=south,row=4": {
+      "model": "splinecraft:block/field_floor_column_0_row_4",
+      "y": 180
+    },
+    "column=0,facing=south,row=5": {
+      "model": "splinecraft:block/field_floor_column_0_row_5",
+      "y": 180
+    },
+    "column=0,facing=west,row=0": {
+      "model": "splinecraft:block/field_floor_column_0_row_0",
+      "y": 270
+    },
+    "column=0,facing=west,row=1": {
+      "model": "splinecraft:block/field_floor_column_0_row_1",
+      "y": 270
+    },
+    "column=0,facing=west,row=2": {
+      "model": "splinecraft:block/field_floor_column_0_row_2",
+      "y": 270
+    },
+    "column=0,facing=west,row=3": {
+      "model": "splinecraft:block/field_floor_column_0_row_3",
+      "y": 270
+    },
+    "column=0,facing=west,row=4": {
+      "model": "splinecraft:block/field_floor_column_0_row_4",
+      "y": 270
+    },
+    "column=0,facing=west,row=5": {
+      "model": "splinecraft:block/field_floor_column_0_row_5",
+      "y": 270
+    },
+    "column=1,facing=east,row=0": {
+      "model": "splinecraft:block/field_floor_column_1_row_0",
+      "y": 90
+    },
+    "column=1,facing=east,row=1": {
+      "model": "splinecraft:block/field_floor_column_1_row_1",
+      "y": 90
+    },
+    "column=1,facing=east,row=2": {
+      "model": "splinecraft:block/field_floor_column_1_row_2",
+      "y": 90
+    },
+    "column=1,facing=east,row=3": {
+      "model": "splinecraft:block/field_floor_column_1_row_3",
+      "y": 90
+    },
+    "column=1,facing=east,row=4": {
+      "model": "splinecraft:block/field_floor_column_1_row_4",
+      "y": 90
+    },
+    "column=1,facing=east,row=5": {
+      "model": "splinecraft:block/field_floor_column_1_row_5",
+      "y": 90
+    },
+    "column=1,facing=north,row=0": {
+      "model": "splinecraft:block/field_floor_column_1_row_0"
+    },
+    "column=1,facing=north,row=1": {
+      "model": "splinecraft:block/field_floor_column_1_row_1"
+    },
+    "column=1,facing=north,row=2": {
+      "model": "splinecraft:block/field_floor_column_1_row_2"
+    },
+    "column=1,facing=north,row=3": {
+      "model": "splinecraft:block/field_floor_column_1_row_3"
+    },
+    "column=1,facing=north,row=4": {
+      "model": "splinecraft:block/field_floor_column_1_row_4"
+    },
+    "column=1,facing=north,row=5": {
+      "model": "splinecraft:block/field_floor_column_1_row_5"
+    },
+    "column=1,facing=south,row=0": {
+      "model": "splinecraft:block/field_floor_column_1_row_0",
+      "y": 180
+    },
+    "column=1,facing=south,row=1": {
+      "model": "splinecraft:block/field_floor_column_1_row_1",
+      "y": 180
+    },
+    "column=1,facing=south,row=2": {
+      "model": "splinecraft:block/field_floor_column_1_row_2",
+      "y": 180
+    },
+    "column=1,facing=south,row=3": {
+      "model": "splinecraft:block/field_floor_column_1_row_3",
+      "y": 180
+    },
+    "column=1,facing=south,row=4": {
+      "model": "splinecraft:block/field_floor_column_1_row_4",
+      "y": 180
+    },
+    "column=1,facing=south,row=5": {
+      "model": "splinecraft:block/field_floor_column_1_row_5",
+      "y": 180
+    },
+    "column=1,facing=west,row=0": {
+      "model": "splinecraft:block/field_floor_column_1_row_0",
+      "y": 270
+    },
+    "column=1,facing=west,row=1": {
+      "model": "splinecraft:block/field_floor_column_1_row_1",
+      "y": 270
+    },
+    "column=1,facing=west,row=2": {
+      "model": "splinecraft:block/field_floor_column_1_row_2",
+      "y": 270
+    },
+    "column=1,facing=west,row=3": {
+      "model": "splinecraft:block/field_floor_column_1_row_3",
+      "y": 270
+    },
+    "column=1,facing=west,row=4": {
+      "model": "splinecraft:block/field_floor_column_1_row_4",
+      "y": 270
+    },
+    "column=1,facing=west,row=5": {
+      "model": "splinecraft:block/field_floor_column_1_row_5",
+      "y": 270
+    },
+    "column=2,facing=east,row=0": {
+      "model": "splinecraft:block/field_floor_column_2_row_0",
+      "y": 90
+    },
+    "column=2,facing=east,row=1": {
+      "model": "splinecraft:block/field_floor_column_2_row_1",
+      "y": 90
+    },
+    "column=2,facing=east,row=2": {
+      "model": "splinecraft:block/field_floor_column_2_row_2",
+      "y": 90
+    },
+    "column=2,facing=east,row=3": {
+      "model": "splinecraft:block/field_floor_column_2_row_3",
+      "y": 90
+    },
+    "column=2,facing=east,row=4": {
+      "model": "splinecraft:block/field_floor_column_2_row_4",
+      "y": 90
+    },
+    "column=2,facing=east,row=5": {
+      "model": "splinecraft:block/field_floor_column_2_row_5",
+      "y": 90
+    },
+    "column=2,facing=north,row=0": {
+      "model": "splinecraft:block/field_floor_column_2_row_0"
+    },
+    "column=2,facing=north,row=1": {
+      "model": "splinecraft:block/field_floor_column_2_row_1"
+    },
+    "column=2,facing=north,row=2": {
+      "model": "splinecraft:block/field_floor_column_2_row_2"
+    },
+    "column=2,facing=north,row=3": {
+      "model": "splinecraft:block/field_floor_column_2_row_3"
+    },
+    "column=2,facing=north,row=4": {
+      "model": "splinecraft:block/field_floor_column_2_row_4"
+    },
+    "column=2,facing=north,row=5": {
+      "model": "splinecraft:block/field_floor_column_2_row_5"
+    },
+    "column=2,facing=south,row=0": {
+      "model": "splinecraft:block/field_floor_column_2_row_0",
+      "y": 180
+    },
+    "column=2,facing=south,row=1": {
+      "model": "splinecraft:block/field_floor_column_2_row_1",
+      "y": 180
+    },
+    "column=2,facing=south,row=2": {
+      "model": "splinecraft:block/field_floor_column_2_row_2",
+      "y": 180
+    },
+    "column=2,facing=south,row=3": {
+      "model": "splinecraft:block/field_floor_column_2_row_3",
+      "y": 180
+    },
+    "column=2,facing=south,row=4": {
+      "model": "splinecraft:block/field_floor_column_2_row_4",
+      "y": 180
+    },
+    "column=2,facing=south,row=5": {
+      "model": "splinecraft:block/field_floor_column_2_row_5",
+      "y": 180
+    },
+    "column=2,facing=west,row=0": {
+      "model": "splinecraft:block/field_floor_column_2_row_0",
+      "y": 270
+    },
+    "column=2,facing=west,row=1": {
+      "model": "splinecraft:block/field_floor_column_2_row_1",
+      "y": 270
+    },
+    "column=2,facing=west,row=2": {
+      "model": "splinecraft:block/field_floor_column_2_row_2",
+      "y": 270
+    },
+    "column=2,facing=west,row=3": {
+      "model": "splinecraft:block/field_floor_column_2_row_3",
+      "y": 270
+    },
+    "column=2,facing=west,row=4": {
+      "model": "splinecraft:block/field_floor_column_2_row_4",
+      "y": 270
+    },
+    "column=2,facing=west,row=5": {
+      "model": "splinecraft:block/field_floor_column_2_row_5",
+      "y": 270
+    },
+    "column=3,facing=east,row=0": {
+      "model": "splinecraft:block/field_floor_column_3_row_0",
+      "y": 90
+    },
+    "column=3,facing=east,row=1": {
+      "model": "splinecraft:block/field_floor_column_3_row_1",
+      "y": 90
+    },
+    "column=3,facing=east,row=2": {
+      "model": "splinecraft:block/field_floor_column_3_row_2",
+      "y": 90
+    },
+    "column=3,facing=east,row=3": {
+      "model": "splinecraft:block/field_floor_column_3_row_3",
+      "y": 90
+    },
+    "column=3,facing=east,row=4": {
+      "model": "splinecraft:block/field_floor_column_3_row_4",
+      "y": 90
+    },
+    "column=3,facing=east,row=5": {
+      "model": "splinecraft:block/field_floor_column_3_row_5",
+      "y": 90
+    },
+    "column=3,facing=north,row=0": {
+      "model": "splinecraft:block/field_floor_column_3_row_0"
+    },
+    "column=3,facing=north,row=1": {
+      "model": "splinecraft:block/field_floor_column_3_row_1"
+    },
+    "column=3,facing=north,row=2": {
+      "model": "splinecraft:block/field_floor_column_3_row_2"
+    },
+    "column=3,facing=north,row=3": {
+      "model": "splinecraft:block/field_floor_column_3_row_3"
+    },
+    "column=3,facing=north,row=4": {
+      "model": "splinecraft:block/field_floor_column_3_row_4"
+    },
+    "column=3,facing=north,row=5": {
+      "model": "splinecraft:block/field_floor_column_3_row_5"
+    },
+    "column=3,facing=south,row=0": {
+      "model": "splinecraft:block/field_floor_column_3_row_0",
+      "y": 180
+    },
+    "column=3,facing=south,row=1": {
+      "model": "splinecraft:block/field_floor_column_3_row_1",
+      "y": 180
+    },
+    "column=3,facing=south,row=2": {
+      "model": "splinecraft:block/field_floor_column_3_row_2",
+      "y": 180
+    },
+    "column=3,facing=south,row=3": {
+      "model": "splinecraft:block/field_floor_column_3_row_3",
+      "y": 180
+    },
+    "column=3,facing=south,row=4": {
+      "model": "splinecraft:block/field_floor_column_3_row_4",
+      "y": 180
+    },
+    "column=3,facing=south,row=5": {
+      "model": "splinecraft:block/field_floor_column_3_row_5",
+      "y": 180
+    },
+    "column=3,facing=west,row=0": {
+      "model": "splinecraft:block/field_floor_column_3_row_0",
+      "y": 270
+    },
+    "column=3,facing=west,row=1": {
+      "model": "splinecraft:block/field_floor_column_3_row_1",
+      "y": 270
+    },
+    "column=3,facing=west,row=2": {
+      "model": "splinecraft:block/field_floor_column_3_row_2",
+      "y": 270
+    },
+    "column=3,facing=west,row=3": {
+      "model": "splinecraft:block/field_floor_column_3_row_3",
+      "y": 270
+    },
+    "column=3,facing=west,row=4": {
+      "model": "splinecraft:block/field_floor_column_3_row_4",
+      "y": 270
+    },
+    "column=3,facing=west,row=5": {
+      "model": "splinecraft:block/field_floor_column_3_row_5",
+      "y": 270
+    },
+    "column=4,facing=east,row=0": {
+      "model": "splinecraft:block/field_floor_column_4_row_0",
+      "y": 90
+    },
+    "column=4,facing=east,row=1": {
+      "model": "splinecraft:block/field_floor_column_4_row_1",
+      "y": 90
+    },
+    "column=4,facing=east,row=2": {
+      "model": "splinecraft:block/field_floor_column_4_row_2",
+      "y": 90
+    },
+    "column=4,facing=east,row=3": {
+      "model": "splinecraft:block/field_floor_column_4_row_3",
+      "y": 90
+    },
+    "column=4,facing=east,row=4": {
+      "model": "splinecraft:block/field_floor_column_4_row_4",
+      "y": 90
+    },
+    "column=4,facing=east,row=5": {
+      "model": "splinecraft:block/field_floor_column_4_row_5",
+      "y": 90
+    },
+    "column=4,facing=north,row=0": {
+      "model": "splinecraft:block/field_floor_column_4_row_0"
+    },
+    "column=4,facing=north,row=1": {
+      "model": "splinecraft:block/field_floor_column_4_row_1"
+    },
+    "column=4,facing=north,row=2": {
+      "model": "splinecraft:block/field_floor_column_4_row_2"
+    },
+    "column=4,facing=north,row=3": {
+      "model": "splinecraft:block/field_floor_column_4_row_3"
+    },
+    "column=4,facing=north,row=4": {
+      "model": "splinecraft:block/field_floor_column_4_row_4"
+    },
+    "column=4,facing=north,row=5": {
+      "model": "splinecraft:block/field_floor_column_4_row_5"
+    },
+    "column=4,facing=south,row=0": {
+      "model": "splinecraft:block/field_floor_column_4_row_0",
+      "y": 180
+    },
+    "column=4,facing=south,row=1": {
+      "model": "splinecraft:block/field_floor_column_4_row_1",
+      "y": 180
+    },
+    "column=4,facing=south,row=2": {
+      "model": "splinecraft:block/field_floor_column_4_row_2",
+      "y": 180
+    },
+    "column=4,facing=south,row=3": {
+      "model": "splinecraft:block/field_floor_column_4_row_3",
+      "y": 180
+    },
+    "column=4,facing=south,row=4": {
+      "model": "splinecraft:block/field_floor_column_4_row_4",
+      "y": 180
+    },
+    "column=4,facing=south,row=5": {
+      "model": "splinecraft:block/field_floor_column_4_row_5",
+      "y": 180
+    },
+    "column=4,facing=west,row=0": {
+      "model": "splinecraft:block/field_floor_column_4_row_0",
+      "y": 270
+    },
+    "column=4,facing=west,row=1": {
+      "model": "splinecraft:block/field_floor_column_4_row_1",
+      "y": 270
+    },
+    "column=4,facing=west,row=2": {
+      "model": "splinecraft:block/field_floor_column_4_row_2",
+      "y": 270
+    },
+    "column=4,facing=west,row=3": {
+      "model": "splinecraft:block/field_floor_column_4_row_3",
+      "y": 270
+    },
+    "column=4,facing=west,row=4": {
+      "model": "splinecraft:block/field_floor_column_4_row_4",
+      "y": 270
+    },
+    "column=4,facing=west,row=5": {
+      "model": "splinecraft:block/field_floor_column_4_row_5",
+      "y": 270
+    },
+    "column=5,facing=east,row=0": {
+      "model": "splinecraft:block/field_floor_column_5_row_0",
+      "y": 90
+    },
+    "column=5,facing=east,row=1": {
+      "model": "splinecraft:block/field_floor_column_5_row_1",
+      "y": 90
+    },
+    "column=5,facing=east,row=2": {
+      "model": "splinecraft:block/field_floor_column_5_row_2",
+      "y": 90
+    },
+    "column=5,facing=east,row=3": {
+      "model": "splinecraft:block/field_floor_column_5_row_3",
+      "y": 90
+    },
+    "column=5,facing=east,row=4": {
+      "model": "splinecraft:block/field_floor_column_5_row_4",
+      "y": 90
+    },
+    "column=5,facing=east,row=5": {
+      "model": "splinecraft:block/field_floor_column_5_row_5",
+      "y": 90
+    },
+    "column=5,facing=north,row=0": {
+      "model": "splinecraft:block/field_floor_column_5_row_0"
+    },
+    "column=5,facing=north,row=1": {
+      "model": "splinecraft:block/field_floor_column_5_row_1"
+    },
+    "column=5,facing=north,row=2": {
+      "model": "splinecraft:block/field_floor_column_5_row_2"
+    },
+    "column=5,facing=north,row=3": {
+      "model": "splinecraft:block/field_floor_column_5_row_3"
+    },
+    "column=5,facing=north,row=4": {
+      "model": "splinecraft:block/field_floor_column_5_row_4"
+    },
+    "column=5,facing=north,row=5": {
+      "model": "splinecraft:block/field_floor_column_5_row_5"
+    },
+    "column=5,facing=south,row=0": {
+      "model": "splinecraft:block/field_floor_column_5_row_0",
+      "y": 180
+    },
+    "column=5,facing=south,row=1": {
+      "model": "splinecraft:block/field_floor_column_5_row_1",
+      "y": 180
+    },
+    "column=5,facing=south,row=2": {
+      "model": "splinecraft:block/field_floor_column_5_row_2",
+      "y": 180
+    },
+    "column=5,facing=south,row=3": {
+      "model": "splinecraft:block/field_floor_column_5_row_3",
+      "y": 180
+    },
+    "column=5,facing=south,row=4": {
+      "model": "splinecraft:block/field_floor_column_5_row_4",
+      "y": 180
+    },
+    "column=5,facing=south,row=5": {
+      "model": "splinecraft:block/field_floor_column_5_row_5",
+      "y": 180
+    },
+    "column=5,facing=west,row=0": {
+      "model": "splinecraft:block/field_floor_column_5_row_0",
+      "y": 270
+    },
+    "column=5,facing=west,row=1": {
+      "model": "splinecraft:block/field_floor_column_5_row_1",
+      "y": 270
+    },
+    "column=5,facing=west,row=2": {
+      "model": "splinecraft:block/field_floor_column_5_row_2",
+      "y": 270
+    },
+    "column=5,facing=west,row=3": {
+      "model": "splinecraft:block/field_floor_column_5_row_3",
+      "y": 270
+    },
+    "column=5,facing=west,row=4": {
+      "model": "splinecraft:block/field_floor_column_5_row_4",
+      "y": 270
+    },
+    "column=5,facing=west,row=5": {
+      "model": "splinecraft:block/field_floor_column_5_row_5",
+      "y": 270
+    }
+  }
+}

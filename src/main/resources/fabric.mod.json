@@ -19,6 +19,9 @@
     ],
     "client": [
       "io.github.tropheusj.splinecraft.SplineCraftClient"
+    ],
+    "fabric-datagen": [
+      "io.github.tropheusj.splinecraft.SplineCraftData"
     ]
   },
   "mixins": [

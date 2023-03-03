@@ -30,10 +30,11 @@ import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import static io.github.tropheusj.splinecraft.SplineCraft.id;
 
 public class Content {
-	public static final BlockAndItem ROBOT_CONFIGURATOR = block("robot_configurator", new RobotConfiguratorBlock(Properties.copy(Blocks.IRON_BLOCK)));
-	public static final BlockAndItem FIELD_CONTROLLER = block("field_controller", new FieldControllerBlock(Properties.copy(Blocks.IRON_BLOCK)));
-	public static final BlockAndItem FIELD_FLOOR = block("field_floor", new FieldFloorBlock(Properties.copy(Blocks.BLACK_WOOL)));
-	public static final BlockAndItem FIELD_WALL = block("field_wall", new FieldWallBlock(Properties.copy(Blocks.IRON_BARS)));
+	public static final BlockAndItem ROBOT_CONFIGURATOR = blockAndItem("robot_configurator", new RobotConfiguratorBlock(Properties.copy(Blocks.IRON_BLOCK)));
+	public static final BlockAndItem FIELD_CONTROLLER = blockAndItem("field_controller", new FieldControllerBlock(Properties.copy(Blocks.IRON_BLOCK)));
+	public static final BlockAndItem FIELD_WALL = blockAndItem("field_wall", new FieldWallBlock(Properties.copy(Blocks.IRON_BARS)));
+
+	public static final Block FIELD_FLOOR = block("field_floor", new FieldFloorBlock(Properties.copy(Blocks.BLACK_WOOL)));
 
 	public static final Item REMOTE_CONTROLLER = Registry.register(
 			Registry.ITEM, id("remote_controller"),
@@ -67,11 +68,15 @@ public class Content {
 					.fireImmune().disableSummon().disableSaving().build()
 	);
 
-	private static BlockAndItem block(String name, Block block) {
-		ResourceLocation id = id(name);
-		Registry.register(Registry.BLOCK, id, block);
-		BlockItem item = Registry.register(Registry.ITEM, id, new BlockItem(block, new FabricItemSettings()));
+	private static BlockAndItem blockAndItem(String name, Block block) {
+		block = block(name, block);
+		BlockItem item = Registry.register(Registry.ITEM, SplineCraft.id(name), new BlockItem(block, new FabricItemSettings()));
 		return new BlockAndItem(block, item);
+	}
+
+	private static Block block(String name, Block block) {
+		ResourceLocation id = id(name);
+		return Registry.register(Registry.BLOCK, id, block);
 	}
 
 	public static void init() {

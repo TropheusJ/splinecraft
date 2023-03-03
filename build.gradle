@@ -44,6 +44,24 @@ dependencies {
 	modImplementation("net.fabricmc.fabric-api:fabric-api:${project.fabric_version}")
 }
 
+loom {
+	runs {
+		datagen {
+			client()
+
+			name "Data Generation"
+			vmArg "-Dfabric-api.datagen"
+			vmArg "-Dfabric-api.datagen.output-dir=${file("src/generated/resources")}"
+			vmArg "-Dfabric-api.datagen.modid=splinecraft"
+		}
+	}
+}
+
+sourceSets.main.resources {
+	srcDir("src/generated/resources")
+	exclude("src/generated/resources/.cache")
+}
+
 processResources {
 	Map<String, String> properties = new HashMap<>()
 	properties.put("version", project.version)
