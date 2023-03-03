@@ -1,0 +1,39 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "splinecraft:block/field_wall"
+      },
+      "when": {
+        "shape": "nw|n|ne"
+      }
+    },
+    {
+      "apply": {
+        "model": "splinecraft:block/field_wall",
+        "y": 90
+      },
+      "when": {
+        "shape": "ne|e|se"
+      }
+    },
+    {
+      "apply": {
+        "model": "splinecraft:block/field_wall",
+        "y": 180
+      },
+      "when": {
+        "shape": "se|s|sw"
+      }
+    },
+    {
+      "apply": {
+        "model": "splinecraft:block/field_wall",
+        "y": 270
+      },
+      "when": {
+        "shape": "sw|w|nw"
+      }
+    }
+  ]
+}

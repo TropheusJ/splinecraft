@@ -2,9 +2,6 @@ package io.github.tropheusj.splinecraft.field.controller;
 
 import io.github.tropheusj.splinecraft.Content;
 import io.github.tropheusj.splinecraft.SplineCraft;
-import io.github.tropheusj.splinecraft.field.FieldWallBlock;
-import io.github.tropheusj.splinecraft.field.FieldWallBlock.Shape;
-import io.github.tropheusj.splinecraft.field.floor.FieldFloorBlock;
 import io.github.tropheusj.splinecraft.robot.entity.RobotEntity;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.core.BlockPos;

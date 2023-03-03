@@ -1,18 +1,14 @@
-package io.github.tropheusj.splinecraft.field;
+package io.github.tropheusj.splinecraft.field.wall;
 
 import com.google.common.collect.ArrayTable;
-import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
@@ -21,11 +17,9 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Locale;
 import java.util.Map;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class FieldWallBlock extends Block {

@@ -3,7 +3,7 @@ package io.github.tropheusj.splinecraft;
 import io.github.tropheusj.splinecraft.field.controller.FieldControllerBlock;
 import io.github.tropheusj.splinecraft.field.controller.FieldControllerBlockEntity;
 import io.github.tropheusj.splinecraft.field.floor.FieldFloorBlock;
-import io.github.tropheusj.splinecraft.field.FieldWallBlock;
+import io.github.tropheusj.splinecraft.field.wall.FieldWallBlock;
 import io.github.tropheusj.splinecraft.field.controller.FieldControllerMenu;
 import io.github.tropheusj.splinecraft.field.controller.RemoteControllerItem;
 import io.github.tropheusj.splinecraft.robot.entity.RobotEntity;
@@ -32,8 +32,8 @@ import static io.github.tropheusj.splinecraft.SplineCraft.id;
 public class Content {
 	public static final BlockAndItem ROBOT_CONFIGURATOR = blockAndItem("robot_configurator", new RobotConfiguratorBlock(Properties.copy(Blocks.IRON_BLOCK)));
 	public static final BlockAndItem FIELD_CONTROLLER = blockAndItem("field_controller", new FieldControllerBlock(Properties.copy(Blocks.IRON_BLOCK)));
-	public static final BlockAndItem FIELD_WALL = blockAndItem("field_wall", new FieldWallBlock(Properties.copy(Blocks.IRON_BARS)));
 
+	public static final Block FIELD_WALL = block("field_wall", new FieldWallBlock(Properties.copy(Blocks.IRON_BARS)));
 	public static final Block FIELD_FLOOR = block("field_floor", new FieldFloorBlock(Properties.copy(Blocks.BLACK_WOOL)));
 
 	public static final Item REMOTE_CONTROLLER = Registry.register(
