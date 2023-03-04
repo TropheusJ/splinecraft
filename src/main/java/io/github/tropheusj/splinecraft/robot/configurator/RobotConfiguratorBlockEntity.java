@@ -2,6 +2,7 @@ package io.github.tropheusj.splinecraft.robot.configurator;
 
 import io.github.tropheusj.splinecraft.Content;
 import io.github.tropheusj.splinecraft.robot.config.RobotConfig;
+import io.github.tropheusj.splinecraft.robot.entity.RobotEntity;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -27,6 +28,7 @@ public class RobotConfiguratorBlockEntity extends BlockEntity implements Extende
 	public static final Component TITLE = Component.translatable("splinecraft.robot.configurator.menu");
 
 	public final RobotConfig robotConfig = new RobotConfig();
+	private RobotEntity robot;
 
 	public RobotConfiguratorBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
 		super(type, pos, blockState);
@@ -39,6 +41,10 @@ public class RobotConfiguratorBlockEntity extends BlockEntity implements Extende
 	public void readRobotConfig(CompoundTag tag) {
 		robotConfig.read(tag);
 		setChanged();
+	}
+
+	public void setRobot(RobotEntity robot) {
+		this.robot = robot;
 	}
 
 	@Override

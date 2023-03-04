@@ -9,12 +9,9 @@ import io.github.tropheusj.splinecraft.robot.config.ClientRobotConfig;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Inventory;
 
 public class RobotConfiguratorScreen extends AbstractContainerScreen<RobotConfiguratorMenu> {
@@ -25,8 +22,7 @@ public class RobotConfiguratorScreen extends AbstractContainerScreen<RobotConfig
 
 	private ClientRobotConfig config;
 	private Button applyConfigButton;
-	private Zombie robot;
-	private int age;
+	private RobotEntityWidget robot;
 
 	public RobotConfiguratorScreen(RobotConfiguratorMenu menu, Inventory playerInventory, Component title) {
 		super(menu, playerInventory, title);
@@ -44,13 +40,15 @@ public class RobotConfiguratorScreen extends AbstractContainerScreen<RobotConfig
 		config = new ClientRobotConfig(menu.be.robotConfig, leftPos + 76, topPos + 20, 90, () -> applyConfigButton.active = true);
 		config.editBoxes.values().forEach(this::addRenderableWidget);
 
-		robot = new Zombie(EntityType.ZOMBIE, menu.be.getLevel());
+		robot = new RobotEntityWidget(leftPos + 240, topPos + 135, 60);
+		addRenderableWidget(robot);
 	}
 
 	@Override
 	protected void containerTick() {
 		super.containerTick();
-		age++;
+		if (robot != null)
+			robot.tick();
 	}
 
 	private void applyConfig(Button b) {
@@ -63,9 +61,6 @@ public class RobotConfiguratorScreen extends AbstractContainerScreen<RobotConfig
 		this.renderBackground(poseStack);
 		super.render(poseStack, mouseX, mouseY, partialTick);
 		this.renderTooltip(poseStack, mouseX, mouseY);
-		int robotX = leftPos + 240;
-		int robotY = topPos + 150;
-		InventoryScreen.renderEntityInInventory(robotX,  robotY, 40, robotX - mouseX, robotY - mouseY, robot);
 	}
 
 	@Override

@@ -37,6 +37,7 @@ public class RobotEntityRenderer extends EntityRenderer<RobotEntity> {
 		model.setupAnim(entity, 0, 0, entity.tickCount + partialTick, 0, 0);
 		poseStack.translate(0, 1.5, 0);
 		poseStack.mulPose(Vector3f.XP.rotationDegrees(180));
+		poseStack.mulPose(Vector3f.YP.rotationDegrees(entityYaw));
 		model.renderToBuffer(poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
 		poseStack.popPose();
 	}

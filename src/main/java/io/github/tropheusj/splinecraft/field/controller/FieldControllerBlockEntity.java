@@ -2,6 +2,7 @@ package io.github.tropheusj.splinecraft.field.controller;
 
 import io.github.tropheusj.splinecraft.Content;
 import io.github.tropheusj.splinecraft.SplineCraft;
+import io.github.tropheusj.splinecraft.robot.configurator.RobotConfiguratorBlockEntity;
 import io.github.tropheusj.splinecraft.robot.entity.RobotEntity;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.core.BlockPos;
@@ -64,9 +65,10 @@ public class FieldControllerBlockEntity extends BlockEntity implements ExtendedS
 
 		// place a fresh copy of the field
 		Direction facing = getFacing();
+		Direction left = facing.getCounterClockWise();
 		BlockPos fieldFloorCorner = worldPosition.below()
 				.relative(facing, 6)
-				.relative(facing.getCounterClockWise(), 3);
+				.relative(left, 3);
 
 		StructureTemplate field = serverLevel.getStructureManager().get(FIELD_STRUCTURE)
 				.orElseThrow(() -> new IllegalStateException("Field structure not found"));
@@ -79,14 +81,21 @@ public class FieldControllerBlockEntity extends BlockEntity implements ExtendedS
 		StructurePlaceSettings settings = new StructurePlaceSettings().setRotation(rotation);
 		field.placeInWorld(serverLevel, fieldFloorCorner, fieldFloorCorner, settings, level.random, Block.UPDATE_ALL);
 
-		BlockPos robotStart = worldPosition.above();
+		BlockPos robotStart = worldPosition.relative(facing).relative(left, 2);
 
 		// set up the robot entity
 		if (robot != null)
 			robot.discard();
 		this.robot = new RobotEntity(Content.ROBOT_ENTITY, level);
-		robot.moveTo(robotStart, 0, 0);
+		robot.moveTo(robotStart, facing.toYRot(), 0);
 		level.addFreshEntity(robot);
+
+		// add robot configurator
+		BlockPos configPos = worldPosition.relative(left);
+		level.setBlockAndUpdate(configPos, Content.ROBOT_CONFIGURATOR.block().defaultBlockState());
+		if (level.getBlockEntity(configPos) instanceof RobotConfiguratorBlockEntity config) {
+			config.setRobot(robot);
+		}
 
 		// ready!
 		initialized = true;
