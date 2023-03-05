@@ -1,13 +1,8 @@
-# Fabric Example Mod
+# Splinecraft
+#### Simulation and creation of RoadRunner trajectories in Minecraft
 
-# Stuff
-This template mod, in addition to the features of the standard template mod,
-also has an example test mod as well as an example gametest setup. It uses Mojang
-mappings primarily, but also uses Quilt Mappings for Javadocs and parameter names.
+This project is currently based on RoadRunner 0.5.6 and the corresponding quickstart setup.
 
-## Setup
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the
-IDE that you are using.
-
-## License
-This template is available under the MIT license. Feel free to learn from it and incorporate it in your own projects.
+This is not feature complete and does not cover all use cases for RoadRunner and MeepMeep
+(currently just most of trajectory sequences).
+Open an issue to request additional features, and it may be added.

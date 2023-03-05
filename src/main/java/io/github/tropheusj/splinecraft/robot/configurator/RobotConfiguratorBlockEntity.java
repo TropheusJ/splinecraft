@@ -40,11 +40,13 @@ public class RobotConfiguratorBlockEntity extends BlockEntity implements Extende
 
 	public void readRobotConfig(CompoundTag tag) {
 		robotConfig.read(tag);
+		robot.config.read(tag);
 		setChanged();
 	}
 
 	public void setRobot(RobotEntity robot) {
 		this.robot = robot;
+		robot.config.read(this.robotConfig.write());
 	}
 
 	@Override
@@ -77,8 +79,12 @@ public class RobotConfiguratorBlockEntity extends BlockEntity implements Extende
 
 	@Override
 	public void load(CompoundTag tag) {
-		if (tag.contains("RobotConfig", Tag.TAG_COMPOUND))
-			robotConfig.read(tag.getCompound("RobotConfig"));
+		if (!tag.contains("RobotConfig", Tag.TAG_COMPOUND))
+			return;
+		CompoundTag configTag = tag.getCompound("RobotConfig");
+		robotConfig.read(configTag);
+		if (robot != null)
+			robot.config.read(configTag);
 	}
 
 	// menu stuff

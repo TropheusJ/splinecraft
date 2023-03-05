@@ -63,7 +63,7 @@ public class Content {
 
 	public static final EntityType<RobotEntity> ROBOT_ENTITY = Registry.register(
 			Registry.ENTITY_TYPE, id("robot"),
-			FabricEntityTypeBuilder.create(MobCategory.MISC, RobotEntity::new)
+			FabricEntityTypeBuilder.<RobotEntity>create(MobCategory.MISC, RobotEntity::new)
 					.dimensions(EntityDimensions.scalable(0.75f, 0.75f))
 					.fireImmune().disableSummon().disableSaving().build()
 	);
