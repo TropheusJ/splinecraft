@@ -4,6 +4,6 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 
 public class ClientboundPackets {
 	public static void init() {
-		ClientPlayNetworking.registerGlobalReceiver(ClientboundSpawnRobotPacket.ID, ClientboundSpawnRobotPacket::handle);
+		ClientPlayNetworking.registerGlobalReceiver(ClientboundPlaybackPacket.ID, ClientboundPlaybackPacket::handle);
 	}
 }

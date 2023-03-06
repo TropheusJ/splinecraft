@@ -8,7 +8,7 @@ import com.mojang.math.Quaternion;
 import com.mojang.math.Vector3f;
 
 import io.github.tropheusj.splinecraft.Content;
-import io.github.tropheusj.splinecraft.robot.entity.RobotEntity;
+import io.github.tropheusj.splinecraft.robot.Robot;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Widget;
 import net.minecraft.client.gui.components.events.GuiEventListener;
@@ -21,19 +21,19 @@ import net.minecraft.world.entity.LivingEntity;
 
 import org.jetbrains.annotations.NotNull;
 
-public class RobotEntityWidget implements Widget, GuiEventListener, NarratableEntry {
+public class RobotWidget implements Widget, GuiEventListener, NarratableEntry {
 
-	private final RobotEntity robot;
+//	private final Robot robot;
 	private int age;
 
 	public final int x, y;
 	public final float scale;
 
-	public RobotEntityWidget(int x, int y, float scale) {
+	public RobotWidget(int x, int y, float scale) {
 		this.x = x;
 		this.y = y;
 		this.scale = scale;
-		this.robot = new RobotEntity(Content.ROBOT_ENTITY, Minecraft.getInstance().level);
+//		this.robot = new RobotEntity(Content.ROBOT_ENTITY, Minecraft.getInstance().level);
 	}
 
 	public void tick() {
@@ -64,9 +64,9 @@ public class RobotEntityWidget implements Widget, GuiEventListener, NarratableEn
 		entityRenderDispatcher.overrideCameraOrientation(quaternion2);
 		entityRenderDispatcher.setRenderShadow(false);
 		MultiBufferSource.BufferSource bufferSource = Minecraft.getInstance().renderBuffers().bufferSource();
-		RenderSystem.runAsFancy(() -> entityRenderDispatcher.render(
-				robot, 0.0, 0.0, 0.0, 0.0F, 1.0F, poseStack2, bufferSource, 15728880
-		));
+//		RenderSystem.runAsFancy(() -> entityRenderDispatcher.render(
+//				robot, 0.0, 0.0, 0.0, 0.0F, 1.0F, poseStack2, bufferSource, 15728880
+//		));
 		bufferSource.endBatch();
 		entityRenderDispatcher.setRenderShadow(true);
 		poseStack.popPose();

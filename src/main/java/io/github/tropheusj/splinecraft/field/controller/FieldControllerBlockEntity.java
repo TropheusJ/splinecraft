@@ -3,8 +3,9 @@ package io.github.tropheusj.splinecraft.field.controller;
 import io.github.tropheusj.splinecraft.Content;
 import io.github.tropheusj.splinecraft.SplineCraft;
 import io.github.tropheusj.splinecraft.field.Field;
-import io.github.tropheusj.splinecraft.robot.configurator.RobotConfiguratorBlockEntity;
-import io.github.tropheusj.splinecraft.robot.entity.RobotEntity;
+import io.github.tropheusj.splinecraft.packets.clientbound.ClientboundPlaybackPacket;
+import io.github.tropheusj.splinecraft.robot.PlaybackStatus;
+import io.github.tropheusj.splinecraft.robot.Robot;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -23,7 +24,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -43,68 +43,75 @@ public class FieldControllerBlockEntity extends BlockEntity implements ExtendedS
 
 	private final ItemStack remote;
 
-	public Field field;
-	private RobotEntity robot;
+	private Field field;
+	private Direction facing;
+
 	protected boolean initialized;
 
 	public FieldControllerBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
 		super(type, pos, blockState);
-		this.field = new Field(this);
 		this.remote = new ItemStack(Content.REMOTE_CONTROLLER);
 		CompoundTag tag = new CompoundTag();
 		tag.putIntArray("Controller", List.of(pos.getX(), pos.getY(), pos.getZ()));
 		remote.setTag(tag);
 
+		this.facing = blockState.getValue(FieldControllerBlock.FACING);
+		Direction right = facing.getClockWise();
+		BlockPos corner = worldPosition.relative(facing).relative(right);
+		this.field = new Field(corner, facing, right);
 	}
 
 	public FieldControllerBlockEntity(BlockPos pos, BlockState state) {
 		this(Content.CONTROLLER_BLOCK_ENTITY, pos, state);
 	}
 
+	public Robot getRobot() {
+		return field.robot;
+	}
+
 	public Direction getFacing() {
-		return getBlockState().getValue(FieldControllerBlock.FACING);
+		return facing;
 	}
 
 	public void resetField() {
-		if (!(level instanceof ServerLevel serverLevel))
-			return;
-
-		// place a fresh copy of the field
 		Direction facing = getFacing();
-		Direction left = facing.getCounterClockWise();
-		BlockPos fieldFloorCorner = worldPosition.below()
-				.relative(facing, 6)
-				.relative(left, 3);
+		Direction right = facing.getClockWise();
+		BlockPos corner = worldPosition.relative(facing).relative(right);
 
-		StructureTemplate fieldTemplate = serverLevel.getStructureManager().get(FIELD_STRUCTURE)
-				.orElseThrow(() -> new IllegalStateException("Field structure not found"));
-		Rotation rotation = switch (facing) {
-			case EAST -> Rotation.CLOCKWISE_90;
-			case SOUTH -> Rotation.CLOCKWISE_180;
-			case WEST -> Rotation.COUNTERCLOCKWISE_90;
-			default -> Rotation.NONE;
-		};
-		StructurePlaceSettings settings = new StructurePlaceSettings().setRotation(rotation);
-		fieldTemplate.placeInWorld(serverLevel, fieldFloorCorner, fieldFloorCorner, settings, level.random, Block.UPDATE_ALL);
-
-		// add robot configurator
-		BlockPos configPos = worldPosition.relative(left);
-		level.setBlockAndUpdate(configPos, Content.ROBOT_CONFIGURATOR.block().defaultBlockState());
-		if (!(level.getBlockEntity(configPos) instanceof RobotConfiguratorBlockEntity config))
-			throw new IllegalStateException("Failed to set configurator block entity");
-		this.field.configurator = config;
-
-		// set up the robot entity
-		if (robot != null)
-			robot.discard();
-		this.robot = RobotEntity.spawn(level, this.field, config.robotConfig, this.field.origin, facing.toYRot());
-		this.field.robot = robot;
-
-		config.setRobot(robot);
+		if (level instanceof ServerLevel serverLevel) {
+			// place a fresh copy of the field
+			StructureTemplate fieldTemplate = serverLevel.getStructureManager().get(FIELD_STRUCTURE)
+					.orElseThrow(() -> new IllegalStateException("Field structure not found"));
+			Rotation rotation = switch (facing) {
+				case EAST -> Rotation.CLOCKWISE_90;
+				case SOUTH -> Rotation.CLOCKWISE_180;
+				case WEST -> Rotation.COUNTERCLOCKWISE_90;
+				default -> Rotation.NONE;
+			};
+			StructurePlaceSettings settings = new StructurePlaceSettings().setRotation(rotation);
+			BlockPos anchor = corner.below().relative(facing, 5);
+			fieldTemplate.placeInWorld(serverLevel, anchor, worldPosition, settings, level.random, Block.UPDATE_ALL);
+		}
 
 		// ready!
 		initialized = true;
 		setChanged();
+	}
+
+	public void setRobotStatus(PlaybackStatus status) {
+		Robot robot = getRobot();
+		switch (status) {
+			case PAUSE -> robot.stop();
+			case STOP -> {
+				robot.stop();
+				robot.setPos(0, 0, 0);
+			}
+			case PLAY -> robot.start(drive -> {
+				throw new IllegalStateException();
+			});
+		}
+		if (!level.isClientSide())
+			ClientboundPlaybackPacket.send(this, status);
 	}
 
 	// sync

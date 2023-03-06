@@ -4,6 +4,8 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import io.github.tropheusj.splinecraft.SplineCraft;
+import io.github.tropheusj.splinecraft.packets.serverbound.ServerboundPlaybackPacket;
+import io.github.tropheusj.splinecraft.robot.PlaybackStatus;
 import io.github.tropheusj.splinecraft.packets.serverbound.ServerboundResetFieldPacket;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ImageButton;
@@ -50,6 +52,7 @@ public class FieldControllerScreen extends AbstractContainerScreen<FieldControll
 					BUTTON_SIZE, TEXTURE, IMAGE_WIDTH, IMAGE_HEIGHT, this::pause);
 			addRenderableWidget(playButton);
 			// todo add slider
+
 		}
 	}
 
@@ -74,11 +77,13 @@ public class FieldControllerScreen extends AbstractContainerScreen<FieldControll
 	protected void play(Button b) {
 		removeWidget(playButton);
 		addRenderableWidget(pauseButton);
+		ServerboundPlaybackPacket.send(menu.be, PlaybackStatus.PLAY);
 	}
 
 	protected void pause(Button b) {
 		removeWidget(pauseButton);
 		addRenderableWidget(playButton);
+		ServerboundPlaybackPacket.send(menu.be, PlaybackStatus.STOP);
 	}
 
 	@Override
@@ -98,7 +103,7 @@ public class FieldControllerScreen extends AbstractContainerScreen<FieldControll
 		poseStack.pushPose();
 		poseStack.translate(0, 10, 0); // a little too tall for default resolution
 		//noinspection SuspiciousNameCombination // mapped W/H names are flipped
-		blit(poseStack, leftPos, topPos, 0, offset, 0, width, imageHeight - 40, imageWidth, imageHeight);
+		blit(poseStack, leftPos + offset, topPos, 0, offset, 0, width, imageHeight - 40, imageWidth, imageHeight);
 		poseStack.popPose();
 	}
 }

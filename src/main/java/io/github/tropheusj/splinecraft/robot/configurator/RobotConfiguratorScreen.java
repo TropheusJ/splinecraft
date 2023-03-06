@@ -22,7 +22,7 @@ public class RobotConfiguratorScreen extends AbstractContainerScreen<RobotConfig
 
 	private ClientRobotConfig config;
 	private Button applyConfigButton;
-	private RobotEntityWidget robot;
+	private RobotWidget robot;
 
 	public RobotConfiguratorScreen(RobotConfiguratorMenu menu, Inventory playerInventory, Component title) {
 		super(menu, playerInventory, title);
@@ -40,7 +40,7 @@ public class RobotConfiguratorScreen extends AbstractContainerScreen<RobotConfig
 		config = new ClientRobotConfig(menu.be.robotConfig, leftPos + 76, topPos + 20, 90, () -> applyConfigButton.active = true);
 		config.editBoxes.values().forEach(this::addRenderableWidget);
 
-		robot = new RobotEntityWidget(leftPos + 240, topPos + 135, 60);
+		robot = new RobotWidget(leftPos + 240, topPos + 135, 60);
 		addRenderableWidget(robot);
 	}
 

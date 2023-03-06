@@ -17,7 +17,7 @@ public class RobotConfiguratorMenu extends AbstractContainerMenu {
 	protected final RobotConfiguratorBlockEntity be;
 
 	protected RobotConfiguratorMenu(int containerId, Inventory playerInv, RobotConfiguratorBlockEntity be) {
-		super(Content.CONFIGURATOR_MENU, containerId);
+		super(null, containerId);
 		this.be = be;
 	}
 

@@ -15,8 +15,8 @@ import com.acmerobotics.roadrunner.trajectory.constraints.ProfileAccelerationCon
 import com.acmerobotics.roadrunner.trajectory.constraints.TrajectoryAccelerationConstraint;
 import com.acmerobotics.roadrunner.trajectory.constraints.TrajectoryVelocityConstraint;
 
+import io.github.tropheusj.splinecraft.robot.Robot;
 import io.github.tropheusj.splinecraft.robot.config.RobotConfig;
-import io.github.tropheusj.splinecraft.robot.entity.RobotEntity;
 
 import io.github.tropheusj.splinecraft.robot.following.trajectories.trajectorysequence.TrajectorySequence;
 import io.github.tropheusj.splinecraft.robot.following.trajectories.trajectorysequence.TrajectorySequenceBuilder;
@@ -26,23 +26,23 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class RobotEntityMecanumDrive extends MecanumDrive {
+public class RobotMecanumDrive extends MecanumDrive {
 	// reasonable(?) defaults, shouldn't actually matter really
 	public static final double KV = 1.0 / (1 * 2 * Math.PI * 2 / 60.0);
 	public static final double KA = 0;
 	public static final double KS = 0;
 	public static final double LATERAL_MULTIPLIER = 1;
 
-	private final RobotEntity robot;
+	private final Robot robot;
 	private final TrajectorySequenceRunner runner;
 
 	private final TrajectoryVelocityConstraint velConstraint;
 	private final TrajectoryAccelerationConstraint accelConstraint;
 
-	public RobotEntityMecanumDrive(RobotEntity robot) {
+	public RobotMecanumDrive(Robot robot) {
 		super(KV, KA, KS, robot.config.trackWidth.value, LATERAL_MULTIPLIER);
 		this.robot = robot;
-		setLocalizer(new RobotEntityLocalizer(robot));
+		setLocalizer(new RobotLocalizer(robot));
 		this.runner = new TrajectorySequenceRunner(new DummyTrajectoryFollower());
 
 		RobotConfig config = robot.config;
@@ -57,6 +57,10 @@ public class RobotEntityMecanumDrive extends MecanumDrive {
 		Pose2d pose = runner.update(getPoseEstimate());
 		if (pose != null)
 			setPoseEstimate(pose);
+	}
+
+	public boolean isBusy() {
+		return runner.isBusy();
 	}
 
 	public TrajectoryBuilder trajectoryBuilder(Pose2d startPose) {
